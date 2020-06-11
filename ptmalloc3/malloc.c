@@ -677,6 +677,7 @@ MAX_RELEASE_CHECK_RATE   default: 255 unless not HAVE_MMAP
 #ifdef HAVE_USR_INCLUDE_MALLOC_H
 #include "/usr/include/malloc.h"
 #else /* HAVE_USR_INCLUDE_MALLOC_H */
+#ifndef __ANDROID__
 
 struct mallinfo {
   MALLINFO_FIELD_TYPE arena;    /* non-mmapped space allocated from system */
@@ -691,6 +692,7 @@ struct mallinfo {
   MALLINFO_FIELD_TYPE keepcost; /* releasable (via malloc_trim) space */
 };
 
+#endif /* __ANDROID__ */
 #endif /* HAVE_USR_INCLUDE_MALLOC_H */
 #endif /* NO_MALLINFO */
 
